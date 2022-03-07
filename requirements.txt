@@ -4,7 +4,6 @@ numpy==1.21.2
 opencv_python==4.5.5.62
 Pillow==9.0.1
 streamlit==1.6.0
-base64
 datetime
 io
 pathlib
