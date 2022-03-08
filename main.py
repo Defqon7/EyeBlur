@@ -220,12 +220,13 @@ st.title("Anonymize Faces")
 with st.expander("About this App"):
     st.write("""
         This app allows the user to upload an image and anonymize (blur eyes) each face present in 
-        5 steps:\n
+        6 steps:\n
         1. Upload image using the 'Browse Files' button.
-        2. Using the dropdown menu on the left, choose the desired face detector.
-        3. Using the sliders below the dropdown menu, adjust parameters until all faces are found.
-        4. Click the 'Blur Eyes' button below the image.
-        5. Download the anonymized image by clicking the blue 'Download Image' link below the 'Blur Eyes' button.
+        2. Click the arrow on the left of the screen to expand the sidebar
+        3. Using the dropdown menu on the left, choose the desired face detector.
+        4. Using the sliders below the dropdown menu, adjust parameters until all faces are found.
+        5. Click the 'Blur Eyes' button below the image.
+        6. Download the anonymized image by clicking the blue 'Download Image' link below the 'Blur Eyes' button.
         WARNING: Dlib CNN face detector is very slow. Increasing the upsample value may cause runtime to take minutes.
     """)
 uploaded_file = st.file_uploader("Choose an Image")
