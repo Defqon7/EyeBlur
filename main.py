@@ -235,8 +235,8 @@ detector_name = st.sidebar.selectbox("Select Face Detector",
 # create sidebar menu
 if detector_name == "Dlib HoG":
     upsample = st.sidebar.slider("Select Upsample Value", 0, 5, 1)
-if detector_name == "Dlib CNN (slow)":
-    upsample = st.sidebar.slider("Select Upsample Value (increasing may cause detection to take minutes)", 0, 2, 0)
+#if detector_name == "Dlib CNN (slow)":
+    #upsample = st.sidebar.slider("Select Upsample Value (increasing may cause detection to take minutes)", 0, 2, 0)
 if detector_name == "OpenCV Haar-Cascade":
     min_neighbors = st.sidebar.slider("Select Min. Neighbors", 1, 6, 4)
     scale_factor = st.sidebar.slider("Select Scale Factor", 1.01, 1.40, 1.05)
