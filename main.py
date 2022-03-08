@@ -49,8 +49,8 @@ def blur_eyes(x, y, w, h, face, gray, color_copy):
         i += 1
 
     # find ROIs of eyes plus padding
-    height_constant = 2  # increase for bigger area blurred
-    width_constant = 1.25  # increase for bigger area blurred
+    height_constant = 1  # increase for bigger area blurred
+    width_constant = 1  # increase for bigger area blurred
     left_eye_height = (left_eye[5][1] - left_eye[1][1]) * height_constant
     left_eye_width = (left_eye[3][0] - left_eye[0][0]) * width_constant
     left_eye_roi = color_copy[left_eye[1][1] - int(left_eye_height / 4): left_eye[1][1] -
