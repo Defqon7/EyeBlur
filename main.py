@@ -167,31 +167,31 @@ def detect_faces(detector_name, img):
             st.image(color_copy2, caption='Blurred')
 
     # Dlib CNN
-    if detector_name == "Dlib CNN (slow)":
-        st.write("Dlib CNN chosen")
-        cnn_face_detector = dlib.cnn_face_detection_model_v1(str(dlib_cnn_face_detector))
-        color_copy = np.array(img, dtype='uint8')
-        color_copy2 = np.array(img, dtype='uint8')
-        gray_image = ImageOps.grayscale(img)
-        gray = np.array(gray_image, dtype='uint8')
-        num_faces = 0
-        start = datetime.now()
-        faces = cnn_face_detector(gray, upsample)
-        runtime = datetime.now() - start
-        for face in faces:
-            x = face.rect.left()
-            y = face.rect.top()
-            w = face.rect.right() - x
-            h = face.rect.bottom() - y
-            cv2.rectangle(color_copy, (x, y), (x + w, y + h), (255, 0, 0), 2)
-            num_faces += 1
-        st.image(color_copy, caption=str(num_faces) + ' faces detected. Runtime: ' + str(runtime),
-                 use_column_width=True)
-        if st.button('Blur Eyes'):
-            for face in faces:
-                face_rect = face.rect
-                color_copy2 = blur_eyes(x, y, w, h, face_rect, gray, color_copy2)
-            st.image(color_copy2, caption='Blurred')
+   # if detector_name == "Dlib CNN (slow)":
+    #    st.write("Dlib CNN chosen")
+    #    cnn_face_detector = dlib.cnn_face_detection_model_v1(str(dlib_cnn_face_detector))
+    #    color_copy = np.array(img, dtype='uint8')
+     #   color_copy2 = np.array(img, dtype='uint8')
+     #   gray_image = ImageOps.grayscale(img)
+     #   gray = np.array(gray_image, dtype='uint8')
+     #   num_faces = 0
+      #  start = datetime.now()
+     #   faces = cnn_face_detector(gray, upsample)
+      #  runtime = datetime.now() - start
+     #   for face in faces:
+     #       x = face.rect.left()
+     #       y = face.rect.top()
+      #      w = face.rect.right() - x
+      #      h = face.rect.bottom() - y
+      #      cv2.rectangle(color_copy, (x, y), (x + w, y + h), (255, 0, 0), 2)
+       #     num_faces += 1
+     #   st.image(color_copy, caption=str(num_faces) + ' faces detected. Runtime: ' + str(runtime),
+       #          use_column_width=True)
+      #  if st.button('Blur Eyes'):
+       #     for face in faces:
+        #        face_rect = face.rect
+        #        color_copy2 = blur_eyes(x, y, w, h, face_rect, gray, color_copy2)
+         #   st.image(color_copy2, caption='Blurred')
     return color_copy2
 
 
