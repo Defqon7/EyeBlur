@@ -165,33 +165,6 @@ def detect_faces(detector_name, img):
             for face in faces:
                 color_copy2 = blur_eyes(x, y, w, h, face, gray, color_copy2)
             st.image(color_copy2, caption='Blurred')
-
-    # Dlib CNN
-   # if detector_name == "Dlib CNN (slow)":
-    #    st.write("Dlib CNN chosen")
-    #    cnn_face_detector = dlib.cnn_face_detection_model_v1(str(dlib_cnn_face_detector))
-    #    color_copy = np.array(img, dtype='uint8')
-     #   color_copy2 = np.array(img, dtype='uint8')
-     #   gray_image = ImageOps.grayscale(img)
-     #   gray = np.array(gray_image, dtype='uint8')
-     #   num_faces = 0
-      #  start = datetime.now()
-     #   faces = cnn_face_detector(gray, upsample)
-      #  runtime = datetime.now() - start
-     #   for face in faces:
-     #       x = face.rect.left()
-     #       y = face.rect.top()
-      #      w = face.rect.right() - x
-      #      h = face.rect.bottom() - y
-      #      cv2.rectangle(color_copy, (x, y), (x + w, y + h), (255, 0, 0), 2)
-       #     num_faces += 1
-     #   st.image(color_copy, caption=str(num_faces) + ' faces detected. Runtime: ' + str(runtime),
-       #          use_column_width=True)
-      #  if st.button('Blur Eyes'):
-       #     for face in faces:
-        #        face_rect = face.rect
-        #        color_copy2 = blur_eyes(x, y, w, h, face_rect, gray, color_copy2)
-         #   st.image(color_copy2, caption='Blurred')
     return color_copy2
 
 
@@ -199,7 +172,6 @@ def detect_faces(detector_name, img):
 
 # relative file paths
 directory = pathlib.Path(pathlib.Path(__file__).parent)
-dlib_cnn_face_detector = directory / 'mmod_human_face_detector.dat'
 haar_cascade_face_detector = directory / 'haarcascade_frontalface_default.xml'
 opencv_dnn_model_file = directory / 'res10_300x300_ssd_iter_140000.caffemodel'
 opencv_dnn_config_file = directory / 'deploy.prototxt.txt'
@@ -226,17 +198,14 @@ with st.expander("About this App"):
         4. Using the sliders below the dropdown menu, adjust parameters until all faces are found.
         5. Click the 'Blur Eyes' button below the image.
         6. Download the anonymized image by clicking the blue 'Download Image' link below the 'Blur Eyes' button.
-        WARNING: Dlib CNN face detector is very slow. Increasing the upsample value may cause runtime to take minutes.
     """)
 uploaded_file = st.file_uploader("Choose an Image")
 detector_name = st.sidebar.selectbox("Select Face Detector",
-                                     ("OpenCV DNN", "OpenCV Haar-Cascade", "Dlib HoG", "Dlib CNN (slow)"))
+                                     ("OpenCV DNN", "OpenCV Haar-Cascade", "Dlib HoG"))
 
 # create sidebar menu
 if detector_name == "Dlib HoG":
     upsample = st.sidebar.slider("Select Upsample Value", 0, 5, 1)
-#if detector_name == "Dlib CNN (slow)":
-    #upsample = st.sidebar.slider("Select Upsample Value (increasing may cause detection to take minutes)", 0, 2, 0)
 if detector_name == "OpenCV Haar-Cascade":
     min_neighbors = st.sidebar.slider("Select Min. Neighbors", 1, 6, 4)
     scale_factor = st.sidebar.slider("Select Scale Factor", 1.01, 1.40, 1.05)
