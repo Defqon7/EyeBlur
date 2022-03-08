@@ -1,7 +1,7 @@
 cmake
 imutils==0.5.4
 numpy==1.21.2
-opencv_python==4.5.5.62
+opencv-python-headless
 Pillow==9.0.1
 streamlit==1.6.0
 datetime
