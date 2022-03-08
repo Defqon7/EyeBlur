@@ -121,7 +121,7 @@ def detect_faces(detector_name, img):
     # haar-cascade
     if detector_name == "OpenCV Haar-Cascade":
         st.write("OpenCV Haar-Cascade chosen")
-        face_cascade = cv2.CascadeClassifier(haar_cascade_face_detector)
+        face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
         color_copy = np.array(img, dtype='uint8')
         color_copy2 = np.array(img, dtype='uint8')
         gray_image = ImageOps.grayscale(img)
