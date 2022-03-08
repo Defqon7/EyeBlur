@@ -1,4 +1,4 @@
-CMake
+cmake
 dlib==19.23.0
 imutils==0.5.4
 numpy==1.21.2
